@@ -1,0 +1,106 @@
+@use "~styles/utils.scss" as *;
+
+.header {
+    width: 100%;
+    height: min-content;
+    padding: getThemeValue(spacing, md);
+    position: fixed;
+    z-index: 20;
+    inset: 0 0 auto 0;
+    display: grid;
+    grid: min-content / min(100%, getThemeValue(screen, max-screen-layout));
+    justify-content: center;
+    transition: all 0.3s linear;
+
+    &__ {
+        &box {
+            width: 100%;
+            height: min-content;
+            display: flex;
+            flex-wrap: wrap;
+            gap: getThemeValue(spacing, md);
+
+            &-- {
+                &main {
+                    justify-content: space-between;
+                    align-items: center;
+                }
+
+                &list {
+                    list-style: none;
+                    row-gap: getThemeValue(spacing, 2xs);
+                }
+            }
+        }
+
+        &button {
+            width: max-content;
+            height: min-content;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+        }
+
+        &icon {
+            display: block;
+            color: getThemeValue(color, dark);
+            font-size: getThemeValue(icon, lg);
+            animation: getThemeValue(animation, fadeInClip) 0.3s linear;
+        }
+
+        &link {
+            width: 100%;
+            height: min-content;
+            color: getThemeValue(color, primary);
+            font: normal normal 700 getThemeValue(typography, size, md) / normal getThemeValue(typography, family);
+            text-decoration: none;
+            transition: all 0.2s linear;
+
+            &:hover {
+                color: getThemeValue(color, brand);
+                transform: translateY(-15%);
+            }
+        }
+    }
+
+    &--bg {
+        background-color: getThemeValue(color, main);
+        box-shadow: getThemeValue(shadow) getThemeValue(color, neutral);
+    }
+
+    @media (width < getThemeValue(screen, breakpoint, lg)) {
+        &__ {
+            &box-- {
+                &rendered {
+                    animation: getThemeValue(animation, slideRevealTopToBottomClip) 0.5s linear;
+                }
+
+                &not-rendered {
+                    animation: getThemeValue(animation, slideHideBottomToTopClip) 0.5s linear;
+                }
+            }
+
+            &link {
+                text-align: right;
+            }
+        }
+    }
+
+    @media (width >= getThemeValue(screen, breakpoint, lg)) {
+        padding-inline: getThemeValue(spacing, 6xl);
+
+        &__ {
+            &box-- {
+                &navbar,
+                &list,
+                &item {
+                    width: max-content;
+                }
+            }
+
+            &link {
+                width: max-content;
+            }
+        }
+    }
+}

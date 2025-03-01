@@ -1,0 +1,45 @@
+@use "~styles/utils.scss" as *;
+
+.scroll-to-top-button {
+    width: max-content;
+    height: min-content;
+    padding: getThemeValue(spacing, xs);
+    border: getThemeValue(border, size, sm) solid getThemeValue(color, brand);
+    border-radius: 100%;
+    position: fixed;
+    z-index: 5;
+    inset: auto getThemeValue(spacing, md) getThemeValue(spacing, md) auto;
+    display: block;
+    background-color: getThemeValue(color, brand);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        background-color: transparent;
+        transform: translateY(-15%);
+
+        .scroll-to-top-button__icon {
+            color: getThemeValue(color, brand);
+        }
+    }
+
+    &__icon {
+        display: block;
+        color: getThemeValue(color, secondary);
+        font-size: getThemeValue(icon, md);
+    }
+
+    &-- {
+        &rendered {
+            animation: getThemeValue(animation, slideRevealBottomToTopTransform) 0.3s linear;
+        }
+
+        &not-rendered {
+            animation: getThemeValue(animation, slideHideTopToBottomTransform) 0.3s linear;
+        }
+    }
+
+    @media (width >= getThemeValue(screen, max-screen-layout)) {
+        right: calc((100vw - getThemeValue(screen, max-screen-layout)) / 2);
+    }
+}

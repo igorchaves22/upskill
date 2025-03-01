@@ -1,0 +1,84 @@
+@use "~styles/utils.scss" as *;
+
+.section-container {
+    width: 100%;
+    height: auto;
+    scroll-margin-top: getThemeValue(spacing, 4xl);
+    display: grid;
+    grid: auto-flow / min(100%, getThemeValue(screen, max-screen-layout));
+    place-content: center;
+    place-items: center;
+    background-color: getThemeValue(color, main);
+
+    &__box {
+        width: 100%;
+        height: auto;
+        padding: getThemeValue(spacing, 3xl) getThemeValue(spacing, md);
+        overflow: hidden;
+        display: flex;
+        flex-wrap: wrap;
+        place-content: center;
+        place-items: center;
+        gap: getThemeValue(spacing, 3xl) getThemeValue(spacing, 6xl);
+
+        &-- {
+            &visible {
+                > * {
+                    animation: getThemeValue(animation, backInUp) 1s linear;
+                }
+            }
+
+            &hidden {
+                > * {
+                    opacity: 0;
+                }
+            }
+        }
+    }
+
+    &-- {
+        &min-height-screen {
+            min-height: 100vh;
+        }
+
+        &large-padding-top {
+            padding-top: getThemeValue(spacing, 6xl);
+        }
+
+        &bg-color {
+            background-color: getThemeValue(color, secondary);
+        }
+    }
+
+    @each $breakpoint-name, $breakpoint-value in getThemeValue(screen, breakpoint) {
+        @media (width >= #{$breakpoint-value}) {
+            &__box--layout-#{$breakpoint-name}- {
+                &side,
+                &largeSide,
+                &largeSideOpposite {
+                    display: grid;
+                    grid: auto / repeat(2, 1fr);
+                    gap: getThemeValue(spacing, xl) getThemeValue(spacing, 3xl);
+                }
+
+                &largeSide {
+                    grid-template-columns: 1fr 0.6fr;
+
+                    &Opposite {
+                        grid-template-columns: 0.6fr 1fr;
+                    }
+                }
+
+                &flip {
+                    > :first-child {
+                        order: 2;
+                    }
+
+                    > :last-child {
+                        order: 1;
+                    }
+                }
+            }
+        }
+    }
+}

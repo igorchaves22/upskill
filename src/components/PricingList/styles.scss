@@ -1,0 +1,67 @@
+@use "~styles/utils.scss" as *;
+
+.pricing-list {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: getThemeValue(spacing, sm) getThemeValue(spacing, md);
+    justify-content: center;
+    list-style: none;
+
+    &__ {
+        &box {
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            &--main {
+                max-width: 10rem;
+                padding: getThemeValue(spacing, sm);
+                border-radius: getThemeValue(border, radius, md);
+                row-gap: getThemeValue(spacing, xs);
+                background-color: getThemeValue(color, main);
+                box-shadow: getThemeValue(shadow) getThemeValue(color, neutral);
+                transition: transform 0.2s ease-in-out;
+
+                &:hover {
+                    transform: scale(1.05);
+                }
+            }
+        }
+
+        &text {
+            width: 100%;
+            height: min-content;
+            color: getThemeValue(color, primary);
+            font: normal normal 500 getThemeValue(typography, size, sm) / normal getThemeValue(typography, family);
+            text-align: center;
+
+            &--title {
+                font-weight: 700;
+                font-size: getThemeValue(typography, size, lg);
+            }
+        }
+
+        &icon {
+            color: getThemeValue(color, neutral);
+            font-size: getThemeValue(icon, lg);
+
+            &-- {
+                &success {
+                    color: getThemeValue(color, success);
+                }
+
+                &warning {
+                    color: getThemeValue(color, warning);
+                }
+
+                &danger {
+                    color: getThemeValue(color, danger);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,12 @@
+@use "~styles/utils.scss" as *;
+
+.home-page {
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    place-items: center;
+    background-color: getThemeValue(color, main);
+}

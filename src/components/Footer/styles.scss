@@ -1,0 +1,99 @@
+@use "~styles/utils.scss" as *;
+
+.footer {
+    width: 100%;
+    height: min-content;
+    padding: getThemeValue(spacing, 2xs) getThemeValue(spacing, md) getThemeValue(spacing, 2xl);
+    display: grid;
+    grid: auto-flow / min(100%, getThemeValue(screen, max-screen-layout));
+    row-gap: getThemeValue(spacing, 4xl);
+    justify-content: center;
+    justify-items: center;
+    background-color: getThemeValue(color, main);
+
+    &::before {
+        content: "";
+        width: 65%;
+        height: getThemeValue(border, size, md);
+        border-radius: getThemeValue(border, radius, lg);
+        background-color: getThemeValue(color, neutral);
+    }
+
+    &__ {
+        &box {
+            width: 100%;
+            height: min-content;
+            display: flex;
+            flex-wrap: wrap;
+            gap: getThemeValue(spacing, 2xs) getThemeValue(spacing, xl);
+
+            &-- {
+                &main {
+                    row-gap: getThemeValue(spacing, 2xl);
+                }
+
+                &primary {
+                    row-gap: getThemeValue(spacing, lg);
+                }
+
+                &secondary {
+                    row-gap: getThemeValue(spacing, md);
+                }
+            }
+        }
+
+        &text {
+            width: 100%;
+            height: min-content;
+            color: getThemeValue(color, primary);
+            font: normal normal 400 getThemeValue(typography, size, md) / normal getThemeValue(typography, family);
+
+            &-- {
+                &weight {
+                    font-weight: 800;
+                }
+
+                &sm {
+                    font-size: getThemeValue(typography, size, sm);
+                }
+
+                &lg {
+                    font-size: getThemeValue(typography, size, lg);
+                }
+
+                &center {
+                    text-align: center;
+                }
+            }
+        }
+
+        &link {
+            width: max-content;
+            height: min-content;
+            text-decoration: none;
+        }
+
+        &icon {
+            color: getThemeValue(color, primary);
+            font-size: getThemeValue(icon, sm);
+            transition: all 0.2s linear;
+
+            &:hover {
+                color: getThemeValue(color, brand);
+                transform: translateY(-10%);
+            }
+        }
+    }
+
+    @media (width >= getThemeValue(screen, breakpoint, sm)) {
+        &__box-- {
+            &primary {
+                justify-content: space-evenly;
+            }
+
+            &secondary {
+                width: 40%;
+            }
+        }
+    }
+}

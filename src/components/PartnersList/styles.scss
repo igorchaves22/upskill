@@ -1,0 +1,60 @@
+@use "~styles/utils.scss" as *;
+
+.partners-list {
+    width: 100%;
+    height: min-content;
+    padding: getThemeValue(spacing, md);
+    overflow-x: hidden;
+    position: relative;
+
+    &::before,
+    &::after {
+        content: "";
+        width: 5%;
+        height: 100%;
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+    }
+
+    &::before {
+        right: auto;
+        background: linear-gradient(to right, getThemeValue(color, main), transparent);
+    }
+
+    &::after {
+        left: auto;
+        background: linear-gradient(to left, getThemeValue(color, main), transparent);
+    }
+
+    &__ {
+        &list {
+            width: max-content;
+            height: min-content;
+            list-style: none;
+            display: flex;
+            column-gap: getThemeValue(spacing, xl);
+            animation: getThemeValue(animation, slideScrollRightToLeftTransform) 15s linear infinite;
+
+            > :nth-child(odd) {
+                background-color: getThemeValue(color, neutral);
+                box-shadow: getThemeValue(shadow) getThemeValue(color, dark);
+            }
+
+            > :nth-child(even) {
+                background-color: getThemeValue(color, main);
+                box-shadow: getThemeValue(shadow) getThemeValue(color, neutral);
+            }
+        }
+
+        &item {
+            width: 12rem;
+            height: auto;
+            padding: getThemeValue(spacing, xs);
+            border-radius: getThemeValue(border, radius, md);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}

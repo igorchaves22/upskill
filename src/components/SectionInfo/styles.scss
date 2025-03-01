@@ -1,0 +1,115 @@
+@use "~styles/utils.scss" as *;
+
+.section-info {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    row-gap: getThemeValue(spacing, 4xl);
+
+    &__ {
+        &box {
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: getThemeValue(spacing, sm) getThemeValue(spacing, 2xl);
+            place-content: center;
+            place-items: center;
+
+            &-- {
+                &no-row-gap {
+                    row-gap: 0;
+                }
+
+                &start {
+                    justify-content: start;
+                }
+            }
+        }
+
+        &text {
+            width: 100%;
+            height: min-content;
+            color: getThemeValue(color, primary);
+            font: normal normal 400 getThemeValue(typography, size, md) / normal getThemeValue(typography, family);
+            text-align: center;
+
+            &-- {
+                &title {
+                    width: max-content;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    color: getThemeValue(color, brand);
+                    font-weight: 800;
+                    font-size: getThemeValue(typography, size, lg);
+
+                    &::after {
+                        content: "";
+                        width: 65%;
+                        height: getThemeValue(border, size, md);
+                        border-radius: getThemeValue(border, radius, lg);
+                        display: block;
+                        background-color: getThemeValue(color, brand);
+                    }
+                }
+
+                &subtitle {
+                    font-weight: 800;
+                    font-size: getThemeValue(typography, size, 3xl);
+                }
+
+                &start {
+                    align-items: start;
+                }
+
+                &left {
+                    text-align: left;
+                }
+
+                &justify {
+                    text-align: justify;
+                }
+            }
+        }
+    }
+
+    &--size- {
+        &sm {
+            max-width: 32rem;
+        }
+
+        &md {
+            max-width: 42rem;
+        }
+
+        &lg {
+            max-width: 54rem;
+        }
+    }
+
+    @each $breakpoint-name, $breakpoint-value in getThemeValue(screen, breakpoint) {
+        @media (width >= #{$breakpoint-value}) {
+            &__ {
+                &box--#{$breakpoint-name}-start {
+                    justify-content: start;
+                }
+
+                &text--#{$breakpoint-name}- {
+                    &start {
+                        align-items: start;
+                    }
+
+                    &left {
+                        text-align: left;
+                    }
+
+                    &justify {
+                        text-align: justify;
+                    }
+                }
+            }
+        }
+    }
+}

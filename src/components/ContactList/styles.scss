@@ -1,0 +1,40 @@
+@use "~styles/utils.scss" as *;
+
+.contact-list {
+    width: 100%;
+    height: min-content;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: getThemeValue(spacing, md) getThemeValue(spacing, 3xl);
+    justify-content: space-evenly;
+
+    &__ {
+        &box {
+            width: 12rem;
+            height: 8rem;
+            padding: getThemeValue(spacing, md);
+            border-radius: getThemeValue(border, radius, md);
+            background-color: getThemeValue(color, main);
+            box-shadow: getThemeValue(shadow) getThemeValue(color, neutral);
+        }
+
+        &icon {
+            color: getThemeValue(color, primary);
+            font-size: getThemeValue(icon, lg);
+        }
+
+        &text {
+            width: 100%;
+            height: min-content;
+            color: getThemeValue(color, primary);
+            font: normal normal 400 getThemeValue(typography, size, sm) / normal getThemeValue(typography, family);
+            word-break: break-all;
+
+            &--title {
+                font-weight: 700;
+                font-size: getThemeValue(typography, size, md);
+            }
+        }
+    }
+}

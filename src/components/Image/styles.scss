@@ -1,0 +1,29 @@
+.image {
+    width: 100%;
+    height: min-content;
+    object-fit: contain;
+
+    &-- {
+        &size- {
+            &xs {
+                max-width: 6rem;
+            }
+
+            &sm {
+                max-width: 14rem;
+            }
+
+            &md {
+                max-width: 20rem;
+            }
+
+            &lg {
+                max-width: 28rem;
+            }
+        }
+
+        &radius {
+            border-radius: 100%;
+        }
+    }
+}

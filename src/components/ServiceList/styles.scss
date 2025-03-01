@@ -1,0 +1,93 @@
+@use "~styles/utils.scss" as *;
+
+.service-list {
+    width: 100%;
+    height: min-content;
+    display: flex;
+    flex-wrap: wrap;
+    gap: getThemeValue(spacing, md) getThemeValue(spacing, 3xl);
+    justify-content: center;
+    align-items: center;
+
+    &__ {
+        &box {
+            width: 100%;
+            height: min-content;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+
+            &-- {
+                &main {
+                    max-width: 48rem;
+                    row-gap: getThemeValue(spacing, 2xl);
+                }
+
+                &list {
+                    list-style-type: none;
+                    gap: getThemeValue(spacing, xs) getThemeValue(spacing, sm);
+                }
+
+                &item {
+                    width: max-content;
+                    padding: getThemeValue(spacing, 2xs) getThemeValue(spacing, md);
+                    border-radius: getThemeValue(border, radius, md);
+                    flex-wrap: nowrap;
+                    background-color: getThemeValue(color, main);
+                    box-shadow: getThemeValue(shadow) getThemeValue(color, neutral);
+                }
+            }
+        }
+
+        &icon {
+            color: getThemeValue(color, success);
+            font-size: getThemeValue(icon, sm);
+        }
+
+        &text {
+            width: 100%;
+            height: min-content;
+            color: getThemeValue(color, primary);
+            font: normal normal 700 getThemeValue(typography, size, xs) / normal getThemeValue(typography, family);
+        }
+    }
+
+    @media (width < getThemeValue(screen, breakpoint, md)) {
+        &__box--item {
+            flex-direction: column;
+        }
+    }
+
+    @media (width >= getThemeValue(screen, breakpoint, md)) {
+        &__ {
+            &box-- {
+                &list {
+                    gap: getThemeValue(spacing, xl) getThemeValue(spacing, 3xl);
+
+                    > :nth-child(odd) {
+                        margin-block: getThemeValue(spacing, xs) getThemeValue(spacing, xl);
+                        animation: getThemeValue(animation, bounceX) 2s infinite;
+                    }
+
+                    > :nth-child(even) {
+                        margin-block: getThemeValue(spacing, md) getThemeValue(spacing, 2xs);
+                        animation: getThemeValue(animation, bounceY) 3s infinite;
+                    }
+                }
+
+                &item {
+                    column-gap: getThemeValue(spacing, xs);
+                }
+            }
+
+            &icon {
+                font-size: getThemeValue(icon, md);
+            }
+
+            &text {
+                font-size: getThemeValue(typography, size, sm);
+            }
+        }
+    }
+}

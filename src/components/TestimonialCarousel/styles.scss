@@ -1,0 +1,75 @@
+@use "~styles/utils.scss" as *;
+
+.testimonial-carousel {
+    width: min(100%, 34rem);
+    height: min-content;
+    display: flex;
+    flex-wrap: wrap;
+    gap: getThemeValue(spacing, md) getThemeValue(spacing, 3xl);
+    justify-content: center;
+
+    &__ {
+        &box {
+            width: 100%;
+            height: min-content;
+            display: flex;
+            flex-wrap: wrap;
+            gap: getThemeValue(spacing, md) getThemeValue(spacing, 2xl);
+            align-items: center;
+
+            &-- {
+                &primary {
+                    max-width: 32rem;
+                    min-height: 12rem;
+                    padding: getThemeValue(spacing, md);
+                    border-radius: getThemeValue(border, radius, md);
+                    align-content: start;
+                    background-color: getThemeValue(color, main);
+                    box-shadow: getThemeValue(shadow) getThemeValue(color, neutral);
+                }
+
+                &secondary {
+                    flex-wrap: nowrap;
+                    column-gap: getThemeValue(spacing, xs);
+                }
+            }
+        }
+
+        &text {
+            width: 100%;
+            height: min-content;
+            color: getThemeValue(color, primary);
+            font: normal normal 400 getThemeValue(typography, size, md) / normal getThemeValue(typography, family);
+
+            &--name {
+                color: getThemeValue(color, brand);
+                font-weight: 700;
+            }
+        }
+
+        &button {
+            width: max-content;
+            height: min-content;
+            padding: getThemeValue(spacing, xs);
+            border: getThemeValue(border, size, sm) solid getThemeValue(color, brand);
+            border-radius: 100%;
+            background-color: getThemeValue(color, brand);
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                background-color: transparent;
+
+                .testimonial-carousel__icon {
+                    color: getThemeValue(color, brand);
+                }
+            }
+        }
+
+        &icon {
+            display: block;
+            color: getThemeValue(color, secondary);
+            font-size: getThemeValue(icon-size, sm);
+        }
+    }
+}

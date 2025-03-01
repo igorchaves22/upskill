@@ -1,0 +1,6 @@
+@use "./theme.scss";
+@use "sass:map";
+
+@function getThemeValue($keys...) {
+    @return map.get(theme.$theme, $keys...);
+}
