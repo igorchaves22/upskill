@@ -1,0 +1,12 @@
+@use "~styles/utils.scss" as *;
+
+.logo {
+    width: max-content;
+    height: min-content;
+    color: getThemeValue(color, primary);
+    font: normal normal 800 getThemeValue(typography, size, 3xl) / normal getThemeValue(typography, family);
+
+    &--highlight {
+        color: getThemeValue(color, brand);
+    }
+}

@@ -1,0 +1,34 @@
+@use "~styles/utils.scss" as *;
+
+.cta-link {
+    width: fit-content;
+    min-width: 8rem;
+    max-width: 14rem;
+    height: min-content;
+    padding: getThemeValue(spacing, xs) getThemeValue(spacing, md);
+    border: getThemeValue(border, size, md) solid getThemeValue(color, brand);
+    border-radius: getThemeValue(border, radius, lg);
+    background-color: getThemeValue(color, brand);
+    color: getThemeValue(color, secondary);
+    font: normal normal 700 getThemeValue(typography, size, sm) / normal getThemeValue(typography, family);
+    text-align: center;
+    text-decoration: none;
+    transition:
+        background-color 0.5s ease-in-out,
+        color 0.1s ease-in-out;
+
+    &:hover {
+        background-color: transparent;
+        color: getThemeValue(color, brand);
+
+        &.cta-link--alternative {
+            background-color: getThemeValue(color, brand);
+            color: getThemeValue(color, secondary);
+        }
+    }
+
+    &--alternative {
+        background-color: transparent;
+        color: getThemeValue(color, brand);
+    }
+}

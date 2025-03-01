@@ -1,0 +1,56 @@
+@use "~styles/utils.scss" as *;
+
+.faq-card {
+    width: 100%;
+    height: auto;
+    padding: getThemeValue(spacing, sm);
+    border-radius: getThemeValue(border, radius, md);
+    background-color: getThemeValue(color, main);
+    box-shadow: getThemeValue(shadow-size) getThemeValue(color, neutral);
+
+    &[open] &__ {
+        &icon,
+        &text--question {
+            color: getThemeValue(color, brand);
+        }
+
+        &icon {
+            transform: rotate(180deg);
+        }
+    }
+
+    &__ {
+        &box {
+            width: 100%;
+            height: min-content;
+            display: grid;
+            grid: min-content / 1fr max-content;
+            column-gap: getThemeValue(spacing, md);
+            align-items: center;
+            cursor: pointer;
+        }
+
+        &text--question,
+        &icon {
+            transition: all 0.3s ease-in-out;
+        }
+
+        &text {
+            width: 100%;
+            height: min-content;
+            color: getThemeValue(color, primary);
+            font: normal normal 400 getThemeValue(typography, size, md) / normal getThemeValue(typography, family);
+            text-align: justify;
+
+            &--question {
+                list-style: none;
+                font-weight: 700;
+            }
+        }
+
+        &icon {
+            color: getThemeValue(color, primary);
+            font-size: getThemeValue(icon-size, md);
+        }
+    }
+}

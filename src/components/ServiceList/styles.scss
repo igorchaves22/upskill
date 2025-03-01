@@ -1,0 +1,55 @@
+@use "~styles/utils.scss" as *;
+
+.service-list {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: getThemeValue(spacing, md) getThemeValue(spacing, 3xl);
+    justify-content: center;
+    align-items: center;
+
+    &__ {
+        &box {
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: getThemeValue(spacing, md) getThemeValue(spacing, 2xl);
+            place-content: center;
+            place-items: center;
+
+            &--main {
+                max-width: 42rem;
+                row-gap: getThemeValue(spacing, 2xl);
+            }
+
+            &--list {
+            }
+        }
+
+        &item {
+            width: min(100%, 16rem);
+            height: min-content;
+            padding: getThemeValue(spacing, sm);
+            border-radius: getThemeValue(border, radius, md);
+            display: flex;
+            column-gap: getThemeValue(spacing, xs);
+            align-items: center;
+            background-color: getThemeValue(color, main);
+            box-shadow: getThemeValue(shadow-size) getThemeValue(color, neutral);
+        }
+
+        &icon {
+            color: getThemeValue(color, success);
+            font-size: getThemeValue(icon-size, md);
+        }
+
+        &text {
+            width: 100%;
+            height: min-content;
+            color: getThemeValue(color, primary);
+            font: normal normal 700 getThemeValue(typography, size, sm) / normal getThemeValue(typography, family);
+        }
+    }
+}

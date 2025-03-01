@@ -1,0 +1,89 @@
+@use "~styles/utils.scss" as *;
+
+.footer {
+    width: 100%;
+    height: min-content;
+    padding: getThemeValue(spacing, 5xl) getThemeValue(spacing, md) getThemeValue(spacing, 2xl);
+    display: grid;
+    grid: min-content / min(100%, getThemeValue(screen, max-screen-layout));
+    justify-content: center;
+    background-color: getThemeValue(color, main);
+
+    &__ {
+        &box {
+            width: 100%;
+            height: min-content;
+            display: flex;
+            flex-wrap: wrap;
+            gap: getThemeValue(spacing, xs) getThemeValue(spacing, xl);
+
+            &--gap- {
+                &sm {
+                    row-gap: getThemeValue(spacing, md);
+                }
+
+                &md {
+                    row-gap: getThemeValue(spacing, lg);
+                }
+
+                &lg {
+                    row-gap: getThemeValue(spacing, 6xl);
+                }
+            }
+        }
+
+        &text {
+            width: 100%;
+            height: min-content;
+            color: getThemeValue(color, primary);
+            font: normal normal 400 getThemeValue(typography, size, md) / normal getThemeValue(typography, family);
+
+            &-- {
+                &weight {
+                    font-weight: 800;
+                }
+
+                &sm {
+                    font-size: getThemeValue(typography, size, sm);
+                }
+
+                &lg {
+                    font-size: getThemeValue(typography, size, lg);
+                }
+
+                &center {
+                    text-align: center;
+                }
+            }
+        }
+
+        &link {
+            width: max-content;
+            height: min-content;
+            display: flex;
+            flex-direction: column;
+            row-gap: getThemeValue(spacing, xs);
+            align-items: center;
+            text-decoration: none;
+        }
+
+        &icon {
+            color: getThemeValue(color, primary);
+            font-size: getThemeValue(icon-size, sm);
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+                color: getThemeValue(color, brand);
+                transform: translateY(-10%);
+            }
+        }
+    }
+
+    @media (width >= getThemeValue(screen, breakpoint, sm)) {
+        padding-inline: getThemeValue(spacing, xl);
+
+        &__box--max {
+            width: 45%;
+        }
+    }
+}

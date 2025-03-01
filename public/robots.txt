@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://igor-live-demo-upskill.vercel.app/sitemap.xml

@@ -1,0 +1,110 @@
+@use "~styles/utils.scss" as *;
+
+.contact-form {
+    width: min(100%, 48rem);
+    height: min-content;
+    padding: getThemeValue(spacing, 3xl) getThemeValue(spacing, md);
+    border-radius: getThemeValue(border, radius, md);
+    display: flex;
+    flex-wrap: wrap;
+    gap: getThemeValue(spacing, 2xl) getThemeValue(spacing, lg);
+    background-color: getThemeValue(color, main);
+    box-shadow: getThemeValue(shadow-size) getThemeValue(color, neutral);
+
+    &__ {
+        &box {
+            width: 100%;
+            height: min-content;
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            gap: getThemeValue(spacing, xs) getThemeValue(spacing, lg);
+
+            &-- {
+                &max {
+                    max-width: 22rem;
+                }
+
+                &end {
+                    justify-content: end;
+                }
+            }
+        }
+
+        &input {
+            width: 100%;
+            height: min-content;
+            padding: getThemeValue(spacing, sm) getThemeValue(spacing, md);
+            border: getThemeValue(border, size, sm) solid getThemeValue(color, secondary);
+            border-radius: getThemeValue(border, radius, md);
+            outline: none;
+            color: getThemeValue(color, primary);
+            font: normal normal 400 getThemeValue(typography, size, sm) / normal getThemeValue(typography, family);
+
+            &::placeholder {
+                color: getThemeValue(color, primary);
+                font: normal normal 400 getThemeValue(typography, size, xs) / normal getThemeValue(typography, family);
+                opacity: 0.5;
+            }
+
+            &-- {
+                &error {
+                    border-color: getThemeValue(color, danger);
+
+                    &::placeholder {
+                        color: getThemeValue(color, danger);
+                    }
+                }
+
+                &textarea {
+                    resize: vertical;
+                    min-height: 5rem;
+                    max-height: 12rem;
+
+                    &::-webkit-scrollbar {
+                        width: getThemeValue(border, size, lg);
+                        background-color: transparent;
+                    }
+
+                    &::-webkit-scrollbar-thumb {
+                        border-radius: getThemeValue(border, radius, lg);
+                        background-color: getThemeValue(color, brand);
+                    }
+                }
+            }
+        }
+
+        &error-message {
+            width: 100%;
+            height: min-content;
+            padding-inline: getThemeValue(spacing, sm);
+            position: absolute;
+            inset: calc(100% + getThemeValue(spacing, xs)) 0 0 0;
+            color: getThemeValue(color, danger);
+            font: normal normal 700 getThemeValue(typography, size, xs) / normal getThemeValue(typography, family);
+            animation: getThemeValue(animation, bounce) 1s infinite;
+        }
+
+        &button {
+            width: 6rem;
+            height: min-content;
+            padding: getThemeValue(spacing, xs) getThemeValue(spacing, sm);
+            border: getThemeValue(border, size, md) solid getThemeValue(color, brand);
+            border-radius: getThemeValue(border, radius, lg);
+            background-color: transparent;
+            color: getThemeValue(color, brand);
+            font: normal normal 700 getThemeValue(typography, size, sm) / normal getThemeValue(typography, family);
+            cursor: pointer;
+            transition:
+                background-color 0.3s ease-in-out,
+                color 0.5s ease-in-out,
+                transform 0.5s ease-in-out;
+
+            &:hover {
+                background-color: getThemeValue(color, brand);
+                color: getThemeValue(color, secondary);
+                transform: translateY(-10%);
+            }
+        }
+    }
+}

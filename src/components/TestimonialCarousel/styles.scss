@@ -1,0 +1,75 @@
+@use "~styles/utils.scss" as *;
+
+.testimonial-carousel {
+    width: min(100%, 32rem);
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: getThemeValue(spacing, md) getThemeValue(spacing, xl);
+    justify-content: center;
+
+    &__ {
+        &box {
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: getThemeValue(spacing, xs);
+
+            &-- {
+                &primary {
+                    min-height: 12rem;
+                    padding: getThemeValue(spacing, md) getThemeValue(spacing, xl);
+                    border-radius: getThemeValue(border, radius, md);
+                    align-content: start;
+                    background-color: getThemeValue(color, main);
+                    box-shadow: getThemeValue(shadow-size) getThemeValue(color, neutral);
+                }
+
+                &secondary {
+                    width: max-content;
+                    flex-wrap: nowrap;
+                    align-items: center;
+                }
+            }
+        }
+
+        &button {
+            width: max-content;
+            height: min-content;
+            padding: getThemeValue(spacing, xs);
+            border: getThemeValue(border, size, md) solid getThemeValue(color, brand);
+            border-radius: 100%;
+            background-color: getThemeValue(color, brand);
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                background-color: transparent;
+
+                .testimonial-carousel__icon {
+                    color: getThemeValue(color, brand);
+                }
+            }
+        }
+
+        &icon {
+            display: block;
+            color: getThemeValue(color, secondary);
+            font-size: getThemeValue(icon-size, sm);
+        }
+
+        &text {
+            width: 100%;
+            height: min-content;
+            color: getThemeValue(color, primary);
+            font: normal normal 400 getThemeValue(typography, size, sm) / normal getThemeValue(typography, family);
+            text-align: justify;
+
+            &--name {
+                font-weight: 800;
+                font-size: getThemeValue(typography, size, md);
+            }
+        }
+    }
+}

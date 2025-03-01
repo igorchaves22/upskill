@@ -1,0 +1,93 @@
+@use "~styles/utils.scss" as *;
+
+.section-info {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    row-gap: getThemeValue(spacing, 3xl);
+
+    &__ {
+        &box {
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: getThemeValue(spacing, md) getThemeValue(spacing, 2xl);
+            place-content: center;
+            place-items: center;
+
+            &-- {
+                &no-row-gap {
+                    row-gap: 0;
+                }
+
+                &left {
+                    justify-content: start;
+                }
+            }
+        }
+
+        &text {
+            width: 100%;
+            height: min-content;
+            color: getThemeValue(color, primary);
+            font: normal normal 400 getThemeValue(typography, size, md) / normal getThemeValue(typography, family);
+            text-align: center;
+
+            &-- {
+                &subtitle {
+                    font-weight: 800;
+                    font-size: getThemeValue(typography, size, 3xl);
+                }
+
+                &title {
+                    color: getThemeValue(color, brand);
+                    font-weight: 800;
+                }
+
+                &left {
+                    text-align: left;
+                }
+
+                &description-left {
+                    text-align: justify;
+                }
+            }
+        }
+    }
+
+    &--size- {
+        &sm {
+            max-width: 20rem;
+        }
+
+        &md {
+            max-width: 36rem;
+        }
+
+        &lg {
+            max-width: 68rem;
+        }
+    }
+
+    @each $breakpoint-name, $breakpoint-value in getThemeValue(screen, breakpoint) {
+        @media (width >= #{$breakpoint-value}) {
+            &__ {
+                &box--#{$breakpoint-name}-left {
+                    justify-content: start;
+                }
+
+                &text--#{$breakpoint-name}- {
+                    &left {
+                        text-align: left;
+                    }
+
+                    &description-left {
+                        text-align: justify;
+                    }
+                }
+            }
+        }
+    }
+}
